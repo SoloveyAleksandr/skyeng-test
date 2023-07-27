@@ -1,0 +1,167 @@
+@import "../../vars.scss";
+
+.container {
+  width: 100%;
+  border: 0.1rem solid $light-2;
+  border-radius: 0.6rem;
+  min-height: 6rem;
+  padding: 1.5rem;
+
+  &._open {
+    .drop {
+      padding-top: 2rem;
+      grid-template-rows: 1fr;
+    }
+
+    .btn {
+      svg {
+        transform: scaleY(-1);
+      }
+    }
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.6rem;
+  border: 0.1rem solid $light-2;
+  background-color: $light-3;
+  transition: 0.3s ease-in-out;
+
+  &:active {
+    background-color: $light-1;
+  }
+
+  svg {
+    transition: 0.3s ease-in-out;
+  }
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.login {
+  font-size: 2rem;
+  color: $blue;
+  text-decoration: none;
+  font-weight: 500;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: $light-2;
+
+  img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.drop {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 0.45s ease-in-out;
+  overflow: hidden;
+}
+
+.infoTile {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  min-height: 0;
+  max-height: 30rem;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  &::-webkit-scrollbar-track {
+    background: $light-2;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $grey;
+    border-radius: 0.5rem;
+  }
+
+  a {
+    font-size: 1.6rem;
+    color: $blue;
+    font-weight: 500;
+  }
+}
+
+.spinnerWrapper {
+  width: 100%;
+  flex: none;
+  min-height: 0;
+  height: fit-content;
+  overflow: hidden;
+}
+
+.spinner {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 30rem;
+
+  span {
+    flex: none;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: $light-1;
+
+    @for $i from 1 through 5 {
+      &:nth-child(#{$i}) {
+        animation: infoSpiner 1s linear $i * 0.3s infinite;
+      }
+    }
+  }
+}
+
+@keyframes infoSpiner {
+  0% {
+    transform: translateY(0%);
+    background-color: $light-1;
+  }
+  50% {
+    transform: translateY(80%);
+    background-color: $black;
+  }
+  100% {
+    transform: translateY(0%);
+    background-color: $light-1;
+  }
+}

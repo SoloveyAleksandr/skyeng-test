@@ -1,0 +1,44 @@
+@import "../../vars.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 52rem;
+  height: 4rem;
+  border: 0.1rem solid $light-2;
+  border-radius: 0.6rem;
+  overflow: hidden;
+}
+
+.input {
+  flex: 1;
+  padding: 0 2rem;
+  height: 100%;
+  font-size: 1.6rem;
+
+  &::placeholder {
+    color: $grey;
+  }
+}
+
+.btn {
+  width: 4rem;
+  height: 100%;
+  background-color: $light-3;
+  border-left: 0.1rem solid $light-2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+    fill: $black;
+  }
+
+  &:active {
+    background-color: $light-2;
+  }
+}
