@@ -145,7 +145,7 @@
 
     @for $i from 1 through 5 {
       &:nth-child(#{$i}) {
-        animation: infoSpiner 1s linear $i * 0.3s infinite;
+        animation: infoSpiner 1s linear $i * 0.5s infinite;
       }
     }
   }

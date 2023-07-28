@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 
-import styles from './SearchForm.module.scss';
+import styles from "./SearchForm.module.scss";
 
 interface ISearchForm {
   value: string;

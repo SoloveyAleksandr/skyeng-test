@@ -1,9 +1,9 @@
 import styles from "./App.module.scss";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import { AiOutlineSearch, AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
-import useGit from "../../git";
+import useGit from "../../gitAPI";
 import { IUser, sort } from "../../types";
 import UserInfo from "../UserInfo/UserInfo";
 import Pagination from "../Pagination/Pagination";

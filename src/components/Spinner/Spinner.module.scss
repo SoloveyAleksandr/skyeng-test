@@ -1,7 +1,10 @@
+@import "../../vars.scss";
+
 .spinner {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
   position: fixed;
   z-index: 2147483647;
   top: 0;
@@ -10,4 +13,21 @@
   height: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(0.5rem);
+
+  &::after {
+    content: "";
+    width: 3vw;
+    height: 3vw;
+    background-color: $black;
+    animation: spin 1s ease-in-out 0s alternate infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.2);
+  }
 }

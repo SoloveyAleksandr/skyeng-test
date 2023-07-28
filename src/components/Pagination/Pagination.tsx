@@ -1,6 +1,6 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from "react";
 
-import styles from './Pagination.module.scss';
+import styles from "./Pagination.module.scss";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 
 interface IPagination {

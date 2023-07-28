@@ -1,6 +1,6 @@
-import styles from './UserInfo.module.scss';
+import styles from "./UserInfo.module.scss";
 
-import React, { FC, useState } from 'react';
+import React, { FC, useState } from "react";
 import { AiOutlineArrowDown } from "react-icons/ai";
 import { IUser } from "../../types";
 
