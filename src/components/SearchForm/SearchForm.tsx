@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import styles from './InputBtn.module.scss';
+import styles from './SearchForm.module.scss';
 
-interface IInputBtn {
+interface ISearchForm {
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   onSubmit: () => void;
@@ -10,7 +10,7 @@ interface IInputBtn {
   icon?: React.ReactNode;
 };
 
-const InputBtn: FC<IInputBtn> = ({
+const SearchForm: FC<ISearchForm> = ({
   value,
   onChange,
   onSubmit,
@@ -33,4 +33,4 @@ const InputBtn: FC<IInputBtn> = ({
   );
 }
 
-export default InputBtn;
+export default SearchForm;

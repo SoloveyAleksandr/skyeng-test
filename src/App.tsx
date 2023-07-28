@@ -1,7 +1,7 @@
 import styles from "./App.module.scss";
 
-import React, { useEffect, useState } from 'react';
-import InputBtn from "./components/InputBtn/InputBtn";
+import { useEffect, useState } from 'react';
+import SearchForm from "./components/SearchForm/SearchForm";
 import { AiOutlineSearch, AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
 import useGit from "./git";
 import { IUser, sort } from "./types";
@@ -10,7 +10,7 @@ import Pagination from "./components/Pagination/Pagination";
 import Spinner from "./components/Spinner/Spinner";
 
 function App() {
-  const { getUsers, getUserRepos } = useGit();
+  const { getUsers, getUserRepos, getUserInfo } = useGit();
 
   const [loadind, setLoading] = useState<boolean>(false);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -20,9 +20,7 @@ function App() {
   const [searchResult, setSearchResult] = useState<IUser[]>([]);
 
   useEffect(() => {
-    return () => {
-      search();
-    }
+    search();
     // eslint-disable-next-line
   }, [page, sort]);
 
@@ -43,20 +41,25 @@ function App() {
     }
   }
 
-  async function getReposList(user: IUser) {
+  async function getInfo(user: IUser) {
     try {
       const list = await getUserRepos(user.repos_url);
+      const info = await getUserInfo(user);
+      if (info) {
+        user.public_repos = info.public_repos;
+        user.created_at = info.created_at;
+      }
       if (list) {
         user.repos_list = list;
-        const newResult = searchResult.map(el => {
-          if (el.id === user.id) {
-            return user;
-          } else {
-            return el;
-          }
-        });
-        setSearchResult(newResult);
       }
+      const newResult = searchResult.map(el => {
+        if (el.id === user.id) {
+          return user;
+        } else {
+          return el;
+        }
+      });
+      setSearchResult(newResult);
     } catch (e) {
       console.log(e);
     }
@@ -77,7 +80,7 @@ function App() {
       }
 
       <div className={styles.container}>
-        <InputBtn
+        <SearchForm
           value={userName}
           onChange={(e) => setUserName(e.target.value)}
           placeholder="Имя пользователя"
@@ -103,7 +106,7 @@ function App() {
                 searchResult.map(user => (
                   <UserInfo key={user.id}
                     user={user}
-                    handleClick={getReposList} />
+                    handleClick={getInfo} />
                 ))
               }
             </div>

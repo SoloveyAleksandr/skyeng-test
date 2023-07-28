@@ -23,6 +23,15 @@ const UserInfo: FC<IUserInfo> = ({
     setOpen(!open);
   }
 
+  function getDate(fromString: string): string {
+    const date = new Date(fromString);
+    const day = date.getDate().toString();
+    const month = date.getMonth().toString();
+    const year = date.getFullYear().toString();
+    const result = `${day.length === 1 ? "0" + day : day}.${month.length === 1 ? "0" + month : month}.${year}`;
+    return result;
+  }
+
   return (
     <div className={[styles.container, open ? styles._open : ""].join(" ")}>
       <div className={styles.head}>
@@ -41,7 +50,15 @@ const UserInfo: FC<IUserInfo> = ({
           {
             user.repos_list ?
               <>
-                <h4 className={styles.infoTile}>Репозитории пользователя: {user.repos_list ? user.repos_list.length : 0}</h4>
+                {
+                  user.created_at &&
+                  <h4 className={styles.infoTile}>
+                    Дата регистрации: {getDate(user.created_at)}
+                  </h4>
+                }
+                <h4 className={styles.infoTile}>
+                  Репозитории пользователя: {user.repos_list ? user.repos_list.length : 0} из {user.public_repos ? user.public_repos : 0}
+                </h4>
                 {
                   user.repos_list.map(repo => (
                     <a key={repo.id} href={repo.html_url} target="_blank" rel="noreferrer">{repo.name}</a>
