@@ -14,7 +14,7 @@ const SearchForm: FC<ISearchForm> = ({
   value,
   onChange,
   onSubmit,
-  placeholder,
+  placeholder = "Текст",
   icon,
 }) => {
 
@@ -27,7 +27,7 @@ const SearchForm: FC<ISearchForm> = ({
     <form className={styles.container} onSubmit={(e) => submit(e)}>
       <input type="text" placeholder={placeholder} className={styles.input} onChange={onChange} value={value} />
       <button type="button" className={styles.btn} onClick={onSubmit}>
-        {icon}
+        {icon ?? icon}
       </button>
     </form>
   );

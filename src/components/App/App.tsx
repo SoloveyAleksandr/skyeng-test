@@ -1,13 +1,13 @@
 import styles from "./App.module.scss";
 
 import { useEffect, useState } from 'react';
-import SearchForm from "./components/SearchForm/SearchForm";
+import SearchForm from "../SearchForm/SearchForm";
 import { AiOutlineSearch, AiOutlineSortAscending, AiOutlineSortDescending } from "react-icons/ai";
-import useGit from "./git";
-import { IUser, sort } from "./types";
-import UserInfo from "./components/UserInfo/UserInfo";
-import Pagination from "./components/Pagination/Pagination";
-import Spinner from "./components/Spinner/Spinner";
+import useGit from "../../git";
+import { IUser, sort } from "../../types";
+import UserInfo from "../UserInfo/UserInfo";
+import Pagination from "../Pagination/Pagination";
+import Spinner from "../Spinner/Spinner";
 
 function App() {
   const { getUsers, getUserRepos, getUserInfo } = useGit();
